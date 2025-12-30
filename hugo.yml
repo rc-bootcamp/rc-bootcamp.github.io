@@ -1,0 +1,32 @@
+baseURL: 'https://rc-bootcamp.github.io/'
+languageCode: 'en-us'
+defaultContentLanguage: 'en'
+title: 'RC bootcamp'
+theme: "hugo-PaperMod"
+enableGitInfo: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 10
+    title: "RC bootcamp"
+  ja:
+    languageName: "Japanese"
+    weight: 20
+    title: "RC bootcamp"
+
+params:
+  env: production
+  assets:
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.ico"
+    favicon32x32: "/favicon-32x32.ico"
+    apple_touch_icon: "/images/apple-touch-icon.png"
+  analytics:
+    google:
+      SiteVerificationTag: "WCCDbMsBFB4Eo726Zr5WUcZRutq8MfBWyIPK7x--dkM"
+
+markup:
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3

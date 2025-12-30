@@ -1,0 +1,24 @@
+<style>
+    .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 0.5em;
+        flex-wrap: nowrap;
+        margin-bottom: 1em;
+    }
+
+    .gallery img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .gallery a {
+        border: none;
+        box-shadow: none;
+        text-decoration: none;
+    }
+</style>
+
+<div class="gallery">
+    {{ .Inner | markdownify }}
+</div>

@@ -1,0 +1,35 @@
+<img id="theme-dependent-image-{{ .Ordinal }}" src="" alt="Theme dependent image" data-light-src="{{ .Get 0 }}"
+    data-dark-src="{{ .Get 1 }}" />
+
+<script>
+    (function () {
+        const img = document.getElementById("theme-dependent-image-{{ .Ordinal }}");
+        const themeToggleButton = document.getElementById('theme-toggle');
+        if (!img || !themeToggleButton) return;
+
+        themeToggleButton.addEventListener('click', () => {
+            const html = document.querySelector("html");
+            const currentTheme = html.dataset.theme || 'light';
+            const lightSrc = img.dataset.lightSrc;
+            const darkSrc = img.dataset.darkSrc;
+            if (currentTheme === 'dark') {
+                img.src = lightSrc;
+            } else {
+                img.src = darkSrc;
+            }
+        });
+
+        function setInitialImageSource() {
+            const html = document.querySelector("html");
+            const currentTheme = html.dataset.theme || 'light';
+            const lightSrc = img.dataset.lightSrc;
+            const darkSrc = img.dataset.darkSrc;
+            if (currentTheme === 'dark') {
+                img.src = darkSrc;
+            } else if (lightSrc) {
+                img.src = lightSrc;
+            }
+        }
+        setInitialImageSource();
+    })();
+</script>
