@@ -17,6 +17,7 @@ languages:
 
 params:
   env: production
+  author: "Katsuma Inoue"
   assets:
     favicon: "/favicon.ico"
     favicon16x16: "/favicon-16x16.ico"
@@ -25,6 +26,8 @@ params:
   analytics:
     google:
       SiteVerificationTag: "WCCDbMsBFB4Eo726Zr5WUcZRutq8MfBWyIPK7x--dkM"
+  doi: "10.1063/5.0283386"
+  github: "rc-bootcamp/rc-bootcamp"
 
 markup:
   tableOfContents:
