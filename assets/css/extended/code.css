@@ -1,0 +1,7 @@
+.post-content code span[style*="color:#75715e"],
+.post-content .chroma .c,
+.post-content .chroma .c1,
+.post-content .chroma .ch,
+.post-content .chroma .cm {
+    color: #b0b0b0 !important;
+}

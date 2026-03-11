@@ -1,5 +1,21 @@
-<img id="theme-dependent-image-{{ .Ordinal }}" src="" alt="Theme dependent image" data-light-src="{{ .Get 0 }}"
-    data-dark-src="{{ .Get 1 }}" />
+{{ $lightSrc := .Get 0 }}
+{{ $darkSrc := .Get 1 }}
+
+{{ $lightImg := resources.Get $lightSrc }}
+{{ $lightOptimized := $lightSrc }}
+{{ if $lightImg }}
+{{ $lightOptimized = ($lightImg.Resize "800x webp q80").RelPermalink }}
+{{ end }}
+
+{{ $darkImg := resources.Get $darkSrc }}
+{{ $darkOptimized := $darkSrc }}
+{{ if $darkImg }}
+{{ $darkOptimized = ($darkImg.Resize "800x webp q80").RelPermalink }}
+{{ end }}
+
+<img id="theme-dependent-image-{{ .Ordinal }}" src="{{ $lightOptimized }}" alt="Theme dependent image"
+    data-light-src="{{ $lightOptimized }}" data-dark-src="{{ $darkOptimized }}" fetchpriority="high"
+    style="width: 100%; height: auto; display: block; object-fit: contain;" loading="eager" />
 
 <script>
     (function () {

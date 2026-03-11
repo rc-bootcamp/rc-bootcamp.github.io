@@ -105,8 +105,8 @@
             </li>
             {{- end }}
 
-            {{- with site.Params.github -}}
             <!-- Show GitHub repo link and stats if githubRepo is set in site params -->
+            {{- with site.Params.github -}}
             {{- $repo := . -}}
             {{- $api := printf "%s%s" "https://api.github.com/repos/" $repo -}}
             {{- $data := "" -}}
@@ -117,7 +117,8 @@
             {{- end }}
             {{- if $data -}}
             <li class="github-icon">
-                <a href="https://github.com/{{ $repo }}" target="_blank" rel="noopener" class="github-link-group">
+                <a href="https://github.com/{{ $repo }}" target="_blank" rel="noopener" class="github-link-group"
+                    aria-label="GitHub repository: {{ $repo }}">
                     <svg xmlns='http://www.w3.org' width='20' height='20' viewBox='0 0 24 24' fill='none'
                         stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'
                         style='vertical-align: middle;'>
@@ -135,41 +136,44 @@
                 </a>
             </li>
             <li class="github-stats">
-                <svg xmlns="http://www.w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="vertical-align: middle;">
-                    <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                </svg>
-                <span>
-                    {{- if ge $data.stargazers_count 1000000 -}}
-                    {{- printf "%.1fM" (div $data.stargazers_count 1000000.0) -}}
-                    {{- else if ge $data.stargazers_count 1000 -}}
-                    {{- printf "%.1fK" (div $data.stargazers_count 1000.0) -}}
-                    {{- else -}}
-                    {{- $data.stargazers_count -}}
-                    {{- end -}}
-                </span>
-            </li>
-            <li class="github-stats">
-                <svg xmlns="http://www.w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    style="vertical-align: middle;">
-                    <circle cx="12" cy="18" r="3"></circle>
-                    <circle cx="6" cy="6" r="3"></circle>
-                    <circle cx="18" cy="6" r="3"></circle>
-                    <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path>
-                    <path d="M12 12v3"></path>
-                </svg>
-                <span>
-                    {{- if ge $data.forks_count 1000000 -}}
-                    {{- printf "%.1fM" (div $data.forks_count 1000000.0) -}}
-                    {{- else if ge $data.forks_count 1000 -}}
-                    {{- printf "%.1fK" (div $data.forks_count 1000.0) -}}
-                    {{- else -}}
-                    {{- $data.forks_count -}}
-                    {{- end -}}
+                <div id="github-stats-container" data-repo="{{ site.Params.github }}" style="display: contents;">
+                    <svg xmlns="http://www.w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="vertical-align: middle;">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                    <span id="github-stars">
+                        {{- if ge $data.stargazers_count 1000000 -}}
+                        {{- printf "%.1fM" (div $data.stargazers_count 1000000.0) -}}
+                        {{- else if ge $data.stargazers_count 1000 -}}
+                        {{- printf "%.1fK" (div $data.stargazers_count 1000.0) -}}
+                        {{- else -}}
+                        {{- $data.stargazers_count -}}
+                        {{- end -}}
+                    </span>
+                    <!-- </li>
+                <li class="github-stats"> -->
+                    <svg xmlns="http://www.w3.org" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="vertical-align: middle;">
+                        <circle cx="12" cy="18" r="3"></circle>
+                        <circle cx="6" cy="6" r="3"></circle>
+                        <circle cx="18" cy="6" r="3"></circle>
+                        <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path>
+                        <path d="M12 12v3"></path>
+                    </svg>
+                    <span id="github-forks">
+                        {{- if ge $data.forks_count 1000000 -}}
+                        {{- printf "%.1fM" (div $data.forks_count 1000000.0) -}}
+                        {{- else if ge $data.forks_count 1000 -}}
+                        {{- printf "%.1fK" (div $data.forks_count 1000.0) -}}
+                        {{- else -}}
+                        {{- $data.forks_count -}}
+                        {{- end -}}
+                    </span>
+                </div>
             </li>
             {{- end -}}
             {{- end -}}

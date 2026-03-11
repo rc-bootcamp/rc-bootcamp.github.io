@@ -1,0 +1,9 @@
+.post-content a,
+.entry-content a {
+    font-weight: 600;
+}
+
+.post-content a:hover {
+    filter: brightness(1.2);
+    text-decoration-thickness: 2px;
+}

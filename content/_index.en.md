@@ -1,5 +1,6 @@
 ---
 date: '2025-11-04T12:00:00+09:00'
+description: 'A comprehensive hands-on resource for beginners in reservoir computing (RC). Learn the basics, implementation, and practical applications through our step-by-step guides.'
 draft: false
 title: 'RC bootcamp'
 toc: true
